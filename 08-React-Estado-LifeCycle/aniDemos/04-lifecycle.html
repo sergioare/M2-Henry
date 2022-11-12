@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Henry - Demo LifeCycle</title>
+	</head>
+	<body>
+		<div id="app"></div>
+
+		<script
+			crossorigin
+			src="https://unpkg.com/react@16/umd/react.development.js"
+		></script>
+		<script
+			crossorigin
+			src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+		></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+		<script type="text/babel">
+			class Numero extends React.Component {
+				constructor(props) {
+					super(props);
+					//this.props.numero = 4
+				}
+
+				onMove() {
+					console.log("Mouse move");
+				}
+
+				componentDidMount() {
+					console.log("Estoy en el DOM");
+					console.log(document.querySelector("#numero"));
+					document.title = this.props.numero;
+					window.addEventListener("mousemove", this.onMove);
+				}
+
+				componentDidUpdate(prevProps, prevState) {
+					console.log("Ya me actualicé:", prevProps);
+					document.title = this.props.numero;
+				}
+
+				componentWillUnmount() {
+					console.log("Adiós");
+					console.log(document.querySelector("#numero"));
+					window.removeEventListener("mousemove", this.onMove);
+				}
+
+				shouldComponentUpdate(nextProps) {
+					if (nextProps.numero > 5) {
+						return false;
+					} else {
+						return true;
+					}
+				}
+
+				render() {
+					console.log("renderizó Número");
+					return <div id="numero">{this.props.numero}</div>;
+				}
+			}
+
+			class Contador extends React.Component {
+				constructor(props) {
+					super(props);
+					this.state = {
+						contador: this.props.contador,
+					};
+					// this.onButtonClick = this.onButtonClick.bind(this);
+				}
+
+				onButtonClick = e => {
+					this.setState(state => ({
+						contador: state.contador + 1,
+					}));
+				};
+
+				render() {
+					return (
+						<div>
+							<button onClick={this.onButtonClick}>Suma uno!</button>
+							<Numero numero={this.state.contador} />
+						</div>
+					);
+				}
+			}
+
+			
+			// function Contador(props) {
+			// 	const [contador, setContador] = React.useState({contador: props.contador})
+			// 	const [nombre, setNombre] = React.useState("")
+			// 	const [misAmigos, setMisAmigos] = React.useState([])
+
+			// 	function onButtonClick(){
+			// 		setMisAmigos((state) => [...state, "otro amigo"])
+			// 	}
+
+
+			// 	return (
+			// 		<div>
+			// 			<button onClick={this.onButtonClick}>Suma uno!</button>
+			// 			<Numero numero={this.state.contador} />
+			// 		</div>
+			// 	);
+			// }
+
+			ReactDOM.render(
+				<Contador contador={0} />,
+				document.getElementById("app")
+			);
+		</script>
+	</body>
+</html>
+<!-- <Numero numero={this.state.contador} />  -->

@@ -1,0 +1,5 @@
+1. Framework: Es un marco de referencia que nos provee herramientas y estandares definidos facilitando el desarrollo de aplicaciones. 
+
+2. Preprocesador: Son programas que interpretan el lenguaje y lo convierten en CSS para que el intérprete lo pueda asociar. 
+
+3. Responsive website: Son sitios web que utilizan métodos los cuales les permiten acoplarse al tipo de pantalla que el usuario está usando sin perder su estilo o "diseño agradable". 

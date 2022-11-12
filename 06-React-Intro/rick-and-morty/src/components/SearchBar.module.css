@@ -1,0 +1,29 @@
+.nav{
+    border: 2px solid white;
+    margin: 0 40px 60px 40px;
+    background-image: url(../Img/high.png);
+    border-radius: 10px;
+}
+
+input {
+    color: #3C3C3C;
+    background: rgb(255, 255, 255);
+    border-radius: 6px;
+    font-weight: bold;
+    width: 200PX;
+    height: 35PX;
+    margin: 10px 0 10px 10px;
+    border: 3.5px solid rgb(220, 44, 199);
+}
+
+.btn {
+    color: rgb(255, 255, 255);
+    background: rgb(220, 44, 199);
+    font-weight: bold;
+    border-radius: 6px;
+    position: absolute;
+    width: 100PX;
+    height: 35PX;
+    margin: 10px 0 10px 10px;
+    
+}
